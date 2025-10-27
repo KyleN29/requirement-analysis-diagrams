@@ -1,12 +1,16 @@
 sequenceDiagram
    participant Picky Movie Enthusiast
    participant Personalization System
+   participant Database
    Picky Movie Enthusiast->>Personalization System: Request Current Genre Rankings
-   Personalization System->>Personalization System: Get Rankings by User Preference Profile
+   Personalization System->>Database: Get Rankings by User Preference Profile
+   Database-->>Personalization System: Return User Genre Rankings
    Personalization System-->>Picky Movie Enthusiast: Return Current Genre Rankings
 
 
     Picky Movie Enthusiast->>Personalization System: Change Genre Ranking
-   Personalization System->>Personalization System: Update Preference Profile
+   Personalization System->>Database: Send New Genre Rankings
+   Database->>Database: Update Genre Rankings
+   Database-->>Personalization System: Return New Genre Rankings
    Personalization System->>Picky Movie Enthusiast: Show New Genre Rankings
 
