@@ -1,0 +1,23 @@
+sequenceDiagram
+    actor User as Casual Movie Watcher
+    participant AccountCreation as Account Creation<br/>System
+    participant Validation as Account Validation
+    participant AccountSettings as Account Settings
+    participant DB as Database
+
+    %% set username and password
+    User ->> AccountCreation: Username and Password
+    AccountCreation ->> Validation: Validate Username<br/>and Password
+    Validation ->> DB: Set Username and Password
+    DB -->> User: Valid Username and Password
+
+    %% update Subscriptions
+    User ->> AccountCreation: Set Subscriptions
+    AccountCreation ->> AccountSettings: Set Subscriptions
+    AccountSettings ->> DB: Update Subscriptions
+    DB -->> AccountCreation: Valid Subscriptions
+
+    %% Login
+    User ->> Validation: Login
+    Validation ->> DB: Validate Password Hash
+    DB -->> User: Login Accepted

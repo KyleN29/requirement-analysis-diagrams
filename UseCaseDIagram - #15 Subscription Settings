@@ -1,0 +1,28 @@
+flowchart TD
+    subgraph Actors
+        Actor1[Casual Movie Watcher]
+        Actor2[Older User]
+    end
+    subgraph Subscription Settings
+        UseCase15((Remove/Add<br/>Subscriptions))
+        Navigate((Navigate to<br/>Settings Page))
+        Display((Display Current<br/>Subscriptions))
+        Change((Change Current<br/>Subscriptions))
+        Confirm((Confirm<br/>Subscription Changes))
+    
+        SettingsSystem((Adjust Settings))
+
+    end
+
+    Actor1 --> UseCase15
+    Actor2 --> UseCase15
+    
+
+    UseCase15 -.->|<<includes>>| Navigate
+    UseCase15 -.->|<<includes>>| Display
+    UseCase15 -.->|<<includes>>| Confirm
+    UseCase15 -.->|<<includes>>| Change
+
+    UseCase15 -->SettingsSystem
+    Display --> SettingsSystem
+    Confirm --> SettingsSystem

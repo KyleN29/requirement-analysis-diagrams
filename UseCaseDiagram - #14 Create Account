@@ -1,0 +1,21 @@
+flowchart TD
+    subgraph Actors
+        Actor1[Casual Movie Watcher]
+        Actor2[Older User]
+    end
+    subgraph CreateAccountSystem[Account Creation System]
+        CreateAccount((Create Account))
+        SetUserPass((Set Username<br/>and Password))
+        Email((Add Email))
+        Subscriptions((Add Initial<br/>Subscriptions))
+        Guide((Account Setup<br/>Guide))
+    end
+
+    Actor1 --> CreateAccount
+    Actor2 --> CreateAccount
+    CreateAccount -->|<<include>>| Guide
+
+
+    CreateAccount -.->|<<include>>| SetUserPass
+    CreateAccount -.->|<<extend>>|Subscriptions
+    CreateAccount -.->|<<extend>>|Email

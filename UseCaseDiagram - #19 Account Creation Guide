@@ -1,0 +1,35 @@
+flowchart TD
+    subgraph Actors
+        Actor1[Casual Movie Watcher]
+        Actor2[Older User]
+    end
+    subgraph Account Creation Guide System
+        useCase19((Complete First-Time Setup Guide))
+        accountCreation((Create an account))
+
+        validate((Validate New<br/>User Account))
+        genres((Select Favorite<br/>Genres))
+        subscriptions((Add Subscriptions))
+        favoriteTitles((Add Initial<br/>Favorite Titles))
+
+        rankingSystem((Rank Genres))
+        subscriptionSystem((Remove/Add<br/>Subscriptions))
+        favoritesSystem((Save your<br/>favorite movies))
+    end
+    
+    Actor1 --> useCase19
+    Actor2 --> useCase19
+
+    useCase19 --> accountCreation
+    validate --> accountCreation
+
+    useCase19 -.->|<<include>>| validate
+    useCase19 -.->|<<extend>>| genres
+    useCase19 -.->|<<include>>| subscriptions
+    useCase19 -.->|<<extend>>| favoriteTitles
+
+
+    genres --> rankingSystem
+    subscriptions --> subscriptionSystem
+    favoriteTitles --> favoritesSystem
+    
