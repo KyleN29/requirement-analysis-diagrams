@@ -1,0 +1,24 @@
+graph TD
+   %% Actors
+   subgraph Actors
+       PickyUser[Picky Movie Enthusiast]
+   end
+
+   %% Use Cases (inside system boundary)
+   subgraph Personalization System
+       RankGenres((Rank Genres))
+       ViewRanking((View Current<br/> Ranking))
+       ChangeRanking((Change Genre<br> Ranking))
+       UpdateProfile((Update Preference<br/> Profile))
+   end
+
+   %% Actor Associations
+   PickyUser --> RankGenres
+
+
+
+   %% Relationships between use cases
+   RankGenres -.->|<<include>>| ViewRanking
+   RankGenres -.->|<<include>>| ChangeRanking
+   ChangeRanking -.->|<<include>>| UpdateProfile
+

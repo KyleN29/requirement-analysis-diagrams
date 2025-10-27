@@ -1,0 +1,36 @@
+graph TD
+   %% Actors
+   subgraph Actors
+       OlderUser[Older User]
+       CasualUser[Casual Movie Watcher]
+       PickyUser[Picky Movie Enthusiast]
+       User[User]
+   end
+
+   %% Use Cases
+   subgraph Recommendation System
+       ViewPersonalized((View Personalized<br/> Suggestions))
+       RankGenres((Rank Genres))
+       RateMovies((Rate Movies))
+       LikeDislike((Like/dislike actors<br/> and directors))
+       ExplainRecommendations((Explain Recommendation<br/> Reasons))
+
+   end
+
+   %% Actor associations
+   OlderUser --> |<<generalization>>|User
+   CasualUser --> |<<generalization>>|User
+   PickyUser --> |<<generalization>>|User
+
+
+   User --> ViewPersonalized
+
+   ViewPersonalized -.->|<<include>>| RankGenres
+   ViewPersonalized -.->|<<include>>| RateMovies
+   ViewPersonalized -.->|<<include>>| LikeDislike
+   RankGenres -.->|<<include>>| ExplainRecommendations
+   RateMovies -.->|<<include>>| ExplainRecommendations
+   LikeDislike -.->|<<include>>| ExplainRecommendations
+
+
+

@@ -1,0 +1,33 @@
+graph TD
+   %% Actors
+   subgraph Actors
+       PickyUser[Picky Movie<br/> Enthusiast]
+       CasualUser[Casual Movie<br/> Watcher]
+       OlderUser[Older<br/> User]
+       User[User]
+   end
+   
+   PickyUser --> |<<generalization>>|User
+   CasualUser --> |<<generalization>>|User
+   OlderUser --> |<<generalization>>|User
+
+   %% Use Cases (inside system boundary)
+   subgraph Search System
+   SearchMovies((Search Movies by<br/> Streaming Platform))
+   ShowSubscriptions((Show Current<br/> Subscriptions))
+   CheckSubscriptions((Check Added<br/> Subscriptions))
+   RemoveSubscriptions((Remove/Add<br/> Subscriptions))
+   DisplayMovies((Display Movies<br/> Matching Search))
+   end
+
+   %% Actor Associations
+   User --> SearchMovies
+
+
+   %% Relationships between use cases
+   SearchMovies -.->|<<include>>| CheckSubscriptions
+   SearchMovies -.->|<<include>>| ShowSubscriptions
+   CheckSubscriptions -.->|<<extend>>| DisplayMovies
+   ShowSubscriptions -.->|<<extend>>| RemoveSubscriptions
+
+

@@ -1,0 +1,21 @@
+sequenceDiagram
+   participant Picky Movie Enthusiast
+   
+   participant Search System
+   participant Personalization System
+   participant TheMovieDB API System
+
+
+   Picky Movie Enthusiast->>Search System: Search for Movie using Owned Streaming Services OR
+   Picky Movie Enthusiast->>Search System: Search for Movie by Custom Streaming Services
+   Search System->>Personalization System: Request User Streaming Services (If Not Custom)
+   Personalization System->>Personalization System: Get User Streaming Services
+   Personalization System-->>Search System: Return User Streaming Services
+	
+   Search System->>TheMovieDB API System: Query API for Movies based on User Input and Specified Streaming Services
+   TheMovieDB API System-->>Search System: Return Movies Matching Query
+
+   Search System-->>Picky Movie Enthusiast: Return Movies Matching Search
+
+
+   
