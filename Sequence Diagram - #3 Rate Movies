@@ -1,0 +1,11 @@
+sequenceDiagram
+   participant User
+   participant Movie Recommendation System
+   participant Database
+   User ->> Movie Recommendation System: Rate a Movie The User Has Previously Seen
+   Movie Recommendation System ->> Database: Update User's Preferences
+   
+   User ->> Movie Recommendation System: Request Movie Recommendation(s)
+   Movie Recommendation System ->> Database: Request User Preferences
+   Database -->> Movie Recommendation System: Return User Preferences
+   Movie Recommendation System -->> User: Return Movie Recommendation(s)
