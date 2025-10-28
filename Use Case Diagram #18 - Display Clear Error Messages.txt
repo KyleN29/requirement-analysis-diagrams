@@ -1,0 +1,32 @@
+flowchart TD
+ subgraph Actors["Actors"]
+        A["Picky Movie Enthusiast"]
+        B["Casual Movie Watcher"]
+        C["Older User"]
+        D["User"]
+  end
+ subgraph pop["Error Handling System"]
+        EA(("Received Error Call"))
+        EB(("Send Error Popup"))
+        EC(("Change Component Appearance"))
+  end
+ subgraph subGraph2["Website Browsing"]
+        WA(("Use Website"))
+        WB(("Error Occurs"))
+        WC(("Popup Message For User"))
+        WD(("Display Component"))
+        pop
+  end
+    A -- &lt;&gt; --> D
+    B -- &lt;&gt; --> D
+    C -- &lt;&gt; --> D
+    D --> WA
+    WA -. &lt;&gt; .-> WA & WD & WB
+    WB -. &lt;&gt; .-> EA
+    EA -. &lt;&gt; .-> EB & EC
+    EB -. &lt;&gt; .-> WC
+    EC -. &lt;&gt; .-> WD
+
+    style pop fill:#FFE0B2
+    style subGraph2 fill:#FFF9C4
+    style Actors fill:#FFF9C4
