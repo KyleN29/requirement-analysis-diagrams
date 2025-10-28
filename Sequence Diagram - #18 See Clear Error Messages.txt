@@ -1,0 +1,20 @@
+sequenceDiagram
+   participant User
+   participant Website Navigation
+   participant Database
+   User ->> Website Navigation: Request Website Components to Be Loaded
+   Website Navigation ->> Database: Request Information for Component
+   break when component information request fails
+       Website Navigation -->> User: Return Error Form of Component
+       Website Navigation ->> Database: Log Error
+   end
+   Database -->> Website Navigation: Return Information for Component
+   Website Navigation -->> User: Return Loaded Components to User
+   User ->> Website Navigation: Perform Action Interacting with the Website
+   Website Navigation ->> Database: Interact With Database (If Needed)
+   break when action fails or database interaction fails
+       Website Navigation -->> User: Return Error Pop-up
+       Website Navigation ->> Database: Log Error
+   end
+   Database -->> Website Navigation: Database Interaction Response
+   Website Navigation -->> User: Action Response
