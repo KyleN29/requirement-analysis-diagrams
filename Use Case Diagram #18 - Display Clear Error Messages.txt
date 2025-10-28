@@ -1,9 +1,6 @@
 flowchart TD
  subgraph Actors["Actors"]
-        A["Picky Movie Enthusiast"]
-        B["Casual Movie Watcher"]
-        C["Older User"]
-        D["User"]
+        A["Older User"]
   end
  subgraph pop["Error Handling System"]
         EA(("Received Error Call"))
@@ -17,11 +14,8 @@ flowchart TD
         WD(("Display Component"))
         pop
   end
-    A -- &lt;&gt; --> D
-    B -- &lt;&gt; --> D
-    C -- &lt;&gt; --> D
-    D --> WA
-    WA -. &lt;&gt; .-> WA & WD & WB
+    A --> WA
+    WA -. &lt;&gt; .-> WD & WB
     WB -. &lt;&gt; .-> EA
     EA -. &lt;&gt; .-> EB & EC
     EB -. &lt;&gt; .-> WC
