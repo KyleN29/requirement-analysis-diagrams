@@ -15,11 +15,11 @@ flowchart TD
         pop
   end
     A --> WA
-    WA -. &lt;&gt; .-> WD & WB
-    WB -. &lt;&gt; .-> EA
-    EA -. &lt;&gt; .-> EB & EC
-    EB -. &lt;&gt; .-> WC
-    EC -. &lt;&gt; .-> WD
+    WA -.->|<<include>>| WD & WB
+    WB -.->|<<extend>>| EA
+    EA -.->|<<include>>| EB & EC
+    EB -->|<<include>>| WC
+    EC -->|<<include>> WD
 
     style pop fill:#FFE0B2
     style subGraph2 fill:#FFF9C4

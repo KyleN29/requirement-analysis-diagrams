@@ -1,19 +1,15 @@
 flowchart TD
  subgraph Actors["Actors"]
         A["Picky Movie Enthusiast"]
-        B["Casual Movie Watcher"]
-        C["Older User"]
-        D["User"]
+
   end
  subgraph subGraph1["Movie_Recomme__ndation_System"]
         U1(("Rate Movies"))
         U3(("View Personalized Movie Suggestions"))
   end
-    A -- &lt;&gt; --> D
-    B -- &lt;&gt; --> D
-    C -- &lt;&gt; --> D
-    D --> U1
-    U1 -. &lt;&gt; .-> U3
+
+    A --> U1
+    U1 -.->|<<extend>>| U3
 
     style Actors fill:#FFF9C4
     style subGraph1 fill:#FFF9C4

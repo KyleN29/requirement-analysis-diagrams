@@ -1,11 +1,8 @@
 flowchart TD
  subgraph Actors["Actors"]
         A["Picky Movie Enthusiast"]
-        B["Casual Movie Watcher"]
-        C["Older User"]
-        D["User"]
   end
- subgraph subGraph3["____Movie__Categories"]
+ subgraph subGraph3["Movie_Categories"]
         MA(("Recommended Movies"))
         MB(("Category Title"))
   end
@@ -16,13 +13,10 @@ flowchart TD
  subgraph subGraph1["Movie_Recommendation_System"]
         U1(("Recommend Movies"))
   end
-    A -- &lt;&gt; --> D
-    B -- &lt;&gt; --> D
-    C -- &lt;&gt; --> D
-    D --> WA
-    U1 -. &lt;&gt; .-> MB
-    WA -. &lt;&gt; .-> MB
-    MB -. &lt;&gt; .-> MA
+    A --> WA
+    U1 -.->|<<include>>| MB
+    WA -.->|<<include>>| MB
+    MB -.->|<<include>>| MA
 
     style subGraph3 fill:#FFE0B2
     style Actors fill:#FFF9C4
